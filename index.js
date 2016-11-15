@@ -1,8 +1,9 @@
 
-var app 	= require('express')();
+var express = require('express');
+var app 	= express();
 var http 	= require('http').Server(app);
 var io 		= require('socket.io')(http);
-
+var path 	= require('path');
 
 
 
@@ -11,6 +12,9 @@ var port  =  3000;
 var SOCKETS = [];
 
 
+app.set('port', port);
+
+app.use(express.static(path.join(__dirname, '/public')));
 
 app.get('/meyaHook', function (req, res)
 {
@@ -34,12 +38,6 @@ app.get('/meyaHook', function (req, res)
 });
 
 
-
-app.get('/',function(req,res)
-{
-
-	res.sendfile(__dirname + '/public/index.html')
-});
 
 
 // ---- CONNECTING
