@@ -37,8 +37,8 @@ app.get('/meyaHook', function (req, res)
 
 app.get('/',function(req,res)
 {
-	res.status(200);
-	res.send('Hello there');
+
+	res.sendfile(__dirname + '/public/index.html')
 });
 
 
